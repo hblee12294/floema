@@ -3,6 +3,7 @@ const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 const dirApp = path.join(__dirname, '../app')
 const dirAssets = path.join(__dirname, '../assets')
@@ -21,6 +22,8 @@ module.exports = {
   },
 
   plugins: [
+    new ESLintPlugin(),
+
     new CopyWebpackPlugin({
       patterns: [
         {
