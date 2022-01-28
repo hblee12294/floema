@@ -36,13 +36,19 @@ app.set('view engine', 'pug')
 app.get('/', async (req, res) => {
   const document = await client.getSingle('home')
 
-  console.log(document)
+  document.data.body.forEach(console.log)
 
   res.render('pages/home')
 })
 
-app.get('/about', (req, res) => {
-  res.render('pages/about')
+app.get('/about', async (req, res) => {
+  const about = await client.getSingle('about')
+
+  about.data.body.forEach(console.log)
+
+  res.render('pages/about', {
+    about,
+  })
 })
 
 app.get('/collection', (req, res) => {
